@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { HiSearch, HiBell, HiChat } from "react-icons/hi"
 import { HiPaintBrush } from 'react-icons/hi2'
+import { FaUser } from "react-icons/fa";
 
 function Header() {
   return (
@@ -12,8 +13,9 @@ function Header() {
             className='hover:bg-gray-300 p-2 rounded-full cursor-pointer'
         />
 
-        <button className='bg-black text-white p-2 px-4 rounded-full'>Home</button>
-        <button className='font-semibold p-2 px-4'>Create</button>
+        <button className='bg-black text-white p-2 rounded-full'>For You</button>
+        {/* <button className='bg-black text-white p-2 px-4 rounded-full'>Clubs</button> */}
+        <button className='font-semibold p-2 '>Clubs</button>
 
         <div className='bg-[#e9e9e9] p-3 flex gap-3 items-center rounded-full'>
             <HiSearch className='text-[25px] text-gray-500'/>
@@ -22,10 +24,10 @@ function Header() {
                 className='bg-transparent outline-none'
             />
         </div>
+        <HiPaintBrush className='text-[40px] text-gray-500'/>
         <HiBell className='text-[40px] text-gray-500'/>
         <HiChat className='text-[40px] text-gray-500'/>
-        <HiPaintBrush className='text-[40px] text-gray-500'/>
-
+        <FaUser className='text-[40px] text-gray-500'/>
         {/* <Image 
             src='/arthub_logo.png' alt='user_profile_picture' 
             width={50} height={50}
