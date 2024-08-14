@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { HiSearch, HiBell, HiChat } from "react-icons/hi"
+import { HiPaintBrush } from 'react-icons/hi2'
 
 function Header() {
   return (
@@ -23,11 +24,13 @@ function Header() {
         </div>
         <HiBell className='text-[40px] text-gray-500'/>
         <HiChat className='text-[40px] text-gray-500'/>
-        <Image 
+        <HiPaintBrush className='text-[40px] text-gray-500'/>
+
+        {/* <Image 
             src='/arthub_logo.png' alt='user_profile_picture' 
             width={50} height={50}
             className='hover:bg-gray-300 p-2 rounded-full cursor-pointer'
-        />
+        /> */}
     </div>
   )
 }
