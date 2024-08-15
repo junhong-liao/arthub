@@ -35,7 +35,15 @@ function Header() {
         <HiPaintBrush className='text-[40px] text-gray-500'/>
         <HiBell className='text-[40px] text-gray-500'/>
         <HiChat className='text-[40px] text-gray-500'/>
-        <button className='font-semibold p-2' onClick={() => signIn()}>Sign in</button>
+
+        {
+          session?.user? 
+          <Image src={session?.user?.image} alt='user-profile-image' width={50} height={50}
+          className='p-1 rounded-full cursor-pointer mx-1'/>: 
+          <button className='font-semibold p-2' onClick={() => signIn()}>Sign in</button>
+        }
+
+
       </div>
     </div>
   )
