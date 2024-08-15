@@ -15,10 +15,10 @@ function Header() {
       <Image 
         src='/arthub_logo.png' alt='arthub_logo' 
         width={50} height={50}
-        className='hover:bg-gray-300 p-2 rounded-full cursor-pointer'
+        className='hover:bg-gray-300 p-1 rounded-full cursor-pointer mx-1'
       />
 
-      <div className='flex-grow flex items-center gap-2'>
+      <div className='flex-grow flex items-center gap-2 mx-2'>
         <button className='bg-black text-white p-2 rounded-full'>For you</button>
         <button className='font-semibold p-2'>Clubs</button>
 
@@ -31,7 +31,7 @@ function Header() {
         </div>
       </div>
 
-      <div className='flex gap-2 items-center'>
+      <div className='flex gap-2 items-center mx-2'>
         <HiPaintBrush className='text-[40px] text-gray-500'/>
         <HiBell className='text-[40px] text-gray-500'/>
         <HiChat className='text-[40px] text-gray-500'/>
