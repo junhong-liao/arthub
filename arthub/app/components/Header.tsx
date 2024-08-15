@@ -15,7 +15,7 @@ function Header() {
 
         <button className='bg-black text-white p-2 rounded-full'>For You</button>
         {/* <button className='bg-black text-white p-2 px-4 rounded-full'>Clubs</button> */}
-        <button className='font-semibold p-2 '>Clubs</button>
+        <button className='font-semibold p-2'>Clubs</button>
 
         <div className='bg-[#e9e9e9] p-3 flex gap-3 items-center rounded-full'>
             <HiSearch className='text-[25px] text-gray-500'/>
