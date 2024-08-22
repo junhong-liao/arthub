@@ -5,10 +5,31 @@ import Image from 'next/image'
 import { useSession, signIn } from "next-auth/react"
 import { HiSearch, HiBell, HiChat } from "react-icons/hi"
 import { HiPaintBrush } from 'react-icons/hi2'
+import app from '../Shared/firebaseConfig'
+import { doc, getFirestore, setDoc } from 'firebase/firestore'
 
 function Header() {
   const { data: session } = useSession()
   console.log(session)
+
+  const db = getFirestore(app)
+
+  const saveUserInfo=async()=>{
+    if(session?.user?.email) {
+      await setDoc(
+        doc(
+          db, 
+          "user", 
+          session.user.email
+        ),
+        {
+          userName: "",
+          email: "",
+          userImage: session.user.image
+        }
+      );
+    }
+  }
 
   return (
     <div className='flex justify-between items-center p-6'>
