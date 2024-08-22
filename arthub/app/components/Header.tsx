@@ -27,10 +27,10 @@ function Header() {
           }
         );
       } catch (error) {
-        console.error("ERROR: User info unsaved: ", error);
+        console.error("HEADER->ERROR: User info unsaved: ", error);
       }
     } else {
-      console.warn("ERROR: User email undefined");
+      console.warn("HEADER->ERROR: User email undefined");
     }
   }
 
