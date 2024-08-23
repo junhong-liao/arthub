@@ -10,7 +10,6 @@ import { useRouter } from 'next/navigation'
 
 function Header() {
   const { data: session } = useSession();
-  console.log('Session ID:', session);
   const db = getFirestore(app);
   const router = useRouter();
 
@@ -30,17 +29,15 @@ function Header() {
           }
         );
       } catch (error) {
-        console.error("HEADER->ERROR: User info unsaved: ", error);
+        console.warn("User email undefined");
       }
-    } else {
-      console.warn("HEADER->ERROR: User email undefined");
     }
   }
 
   return (
     <div className='flex justify-between items-center p-6'>
       <Image 
-        src='/arthub_logo.png' alt='arthub_logo' 
+        src='/arthub_logo.png' alt='arthub_logo'
         width={50} height={50}
         className='hover:bg-gray-300 p-1 rounded-full cursor-pointer mx-1'
       />
@@ -62,17 +59,19 @@ function Header() {
         <HiPaintBrush className='text-[40px] text-gray-500'/>
         <HiBell className='text-[40px] text-gray-500'/>
         <HiChat className='text-[40px] text-gray-500'/>
-
-{/* mvp: currently passing email to router to access profile page*/}
+{/* 
+  mvp: current iteration truncates '@gmail.com' for privacy in the user profile page url  
+  further iterations should prompt user to create a username that we will use for their profile page url
+*/}
         {
           session?.user? 
-          <Image src={session?.user?.image} 
-          onClick={()=>router.push('/'+session.user.email)}
+          <Image 
+          src={session?.user?.image} 
+          onClick={()=>router.push('/'+session.user?.email?.replace("@gmail.com", ""))}
           alt='user-profile-image' width={50} height={50}
-          className='hover:bg-gray-300 p-1 rounded-full cursor-pointer mx-1'/>: 
-          <button className='font-semibold p-2' onClick={() => signIn()}>Sign in</button>
+          className='hover:bg-gray-300 p-1 rounded-full cursor-pointer mx-1'
+          /> : <button className='font-semibold p-2' onClick={() => signIn()}>Sign in</button>
         }
-
 
       </div>
     </div>
