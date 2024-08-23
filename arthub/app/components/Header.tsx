@@ -6,11 +6,14 @@ import Image from 'next/image'
 import { useSession, signIn } from "next-auth/react"
 import { HiSearch, HiBell, HiChat } from "react-icons/hi"
 import { HiPaintBrush } from 'react-icons/hi2'
+import { useRouter } from 'next/navigation'
 
 function Header() {
   const { data: session } = useSession();
   console.log('Session ID:', session);
   const db = getFirestore(app);
+  const router = useRouter();
+
   useEffect(()=>{
     saveUserInfo();
   },[session])
@@ -60,10 +63,13 @@ function Header() {
         <HiBell className='text-[40px] text-gray-500'/>
         <HiChat className='text-[40px] text-gray-500'/>
 
+{/* mvp: currently passing email to router to access profile page*/}
         {
           session?.user? 
-          <Image src={session?.user?.image} alt='user-profile-image' width={50} height={50}
-          className='p-1 rounded-full cursor-pointer mx-1'/>: 
+          <Image src={session?.user?.image} 
+          onClick={()=>router.push('/'+session.user.email)}
+          alt='user-profile-image' width={50} height={50}
+          className='hover:bg-gray-300 p-1 rounded-full cursor-pointer mx-1'/>: 
           <button className='font-semibold p-2' onClick={() => signIn()}>Sign in</button>
         }
 
