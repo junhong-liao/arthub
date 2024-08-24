@@ -1,5 +1,6 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -7,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { HiBell, HiChat, HiSearch } from "react-icons/hi";
 import { HiPaintBrush } from "react-icons/hi2";
-import app from "../Shared/firebaseConfig";
+import app from "../app/Shared/firebaseConfig";
 
 function Header() {
   const { data: session } = useSession();
@@ -50,7 +51,7 @@ function Header() {
 
         <div className="flex-grow bg-[#e9e9e9] p-3 flex items-center rounded-full mx-3">
           <HiSearch className="text-[25px] text-gray-500" />
-          <input
+          <Input
             type="text"
             placeholder="Search"
             className="bg-transparent outline-none ml-2 w-full"
@@ -62,19 +63,16 @@ function Header() {
         <HiPaintBrush className="text-[40px] text-gray-500" />
         <HiBell className="text-[40px] text-gray-500" />
         <HiChat className="text-[40px] text-gray-500" />
+        {/* mvp: current iteration truncates '@gmail.com' for privacy in the user profile page url  
+        further iterations should prompt user to create a username that we will use for their profile page url
+        */}
+
         {/* 
-  mvp: current iteration truncates '@gmail.com' for privacy in the user profile page url  
-  further iterations should prompt user to create a username that we will use for their profile page url
-*/}
-
-
-{/* 
-  If user id, load the image
-  if not, use the default
-
-  import { FaUserAlt } from "react-icons/fa";
-  <FaUserAlt />
-*/}
+        If user id, load the image
+        if not, use the default
+        import { FaUserAlt } from "react-icons/fa";
+        <FaUserAlt />
+        */}
         {session?.user && session?.user?.image ? (
           <Image
             src={session?.user?.image}

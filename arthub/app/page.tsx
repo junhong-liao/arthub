@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Footer from "@/components/Footer/Footer";
 
-export default function Home() {
+export default function Page() {
   return (
     <>
-    <h2 className='text-gray-500 text-center'>© 2024 Arthub Technologies Inc. All rights reserved.</h2>
+      <Footer />
     </>
-  )
+  );
 }

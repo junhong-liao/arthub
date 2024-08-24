@@ -1,10 +1,16 @@
+import "@/styles/globals.css";
 import type { Metadata } from "next";
-import Header from "./components/Header";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Inter as FontSans } from "next/font/google";
+import Header from "../components/Header";
+
+import { cn } from "@/lib/utils";
+
 import Provider from "./Providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Arthub web app",
@@ -17,13 +23,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Provider>
-          <Header/>
+    <Provider>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable
+          )}
+        >
+          <Header />
           {children}
-        </Provider>
         </body>
-    </html>
+      </html>
+    </Provider>
   );
 }
