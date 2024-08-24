@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { doc, getDoc, getFirestore } from 'firebase/firestore'
 import app from "../Shared/firebaseConfig"
 
-function Profile({params}) {
+function Profile({params}:any) {
   const db = getFirestore(app);
 
   // logs userId
@@ -17,7 +17,7 @@ function Profile({params}) {
 
   // retrieve user data from firestore
 
-  const getUserInfo=async(email)=>{
+  const getUserInfo=async({email}:any)=>{
     const docRef = doc(db, "user", email);
     const docSnap = await getDoc(docRef);
     

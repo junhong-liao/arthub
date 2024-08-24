@@ -66,7 +66,16 @@ function Header() {
   mvp: current iteration truncates '@gmail.com' for privacy in the user profile page url  
   further iterations should prompt user to create a username that we will use for their profile page url
 */}
-        {session?.user ? (
+
+
+{/* 
+  If user id, load the image
+  if not, use the default
+
+  import { FaUserAlt } from "react-icons/fa";
+  <FaUserAlt />
+*/}
+        {session?.user && session?.user?.image ? (
           <Image
             src={session?.user?.image}
             onClick={() =>
