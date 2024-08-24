@@ -1,1 +1,1 @@
-Arthub (Artclub v1), under development
+Arthub MVP, under development
